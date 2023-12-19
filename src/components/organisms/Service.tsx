@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import ITImage from "../../assets/it.jpeg";
 import ConsultingImage from "../../assets/consulting.jpeg";
+import MovingBalls from "../molecles/MovingBalls";
 
 const Service = () => {
 	const titleRef = React.useRef(null);
@@ -75,9 +76,9 @@ const Service = () => {
 	return (
 		<div className="py-24 overflow-hidden bg-gray-100">
 			<div className="flex whitespace-nowrap" ref={titleRef}>
-				<p className="font-bold text-9xl ml-8 mr-5">Service</p>
-				<p className="font-bold mt-20">サービス</p>
-				<div className="rect" ref={rectRef}></div>
+				<p className="font-bold text-3xl ml-8 mr-5 md:text-9xl">Service</p>
+				<p className="font-bold hidden md:mt-20">サービス</p>
+				<MovingBalls />
 			</div>
 			<div className="flex justify-end mt-7">
 				<div className="m-3" ref={itImageRef}>
