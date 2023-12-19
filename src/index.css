@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.rect {
+	margin-bottom: 30px;
+	width: 2rem; /* 例: 2rem */
+	height: 2rem; /* 例: 2rem */
+	background-color: gold; /* 白色の背景 */
+	position: absolute; /* 絶対位置指定 */
+	top: 50%; /* 親要素の中央に配置 */
+	left: 50%; /* 親要素の中央に配置 */
+	transform: translate(-50%, -50%); /* 中央に正確に配置するための調整 */
+	border-radius: 9999px; /* 円形にする */
+}
