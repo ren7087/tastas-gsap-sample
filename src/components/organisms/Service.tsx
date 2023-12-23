@@ -7,10 +7,19 @@ import ConsultingImage from "../../assets/consulting.jpeg";
 import MovingBalls from "../molecles/MovingBalls";
 
 const Service = () => {
-	const titleRef = React.useRef(null);
+	const titleRef = React.useRef<HTMLParagraphElement>(null);
 	const itImageRef = React.useRef(null);
 	const consultingImageRef = React.useRef(null);
 	const rectRef = React.useRef(null);
+
+	// テキストを文字ごとに分割する関数の型定義
+	const splitText = (text: string): JSX.Element[] => {
+		return text.split("").map((char, index) => (
+			<span key={index} style={{ display: "inline-block" }}>
+				{char}
+			</span>
+		));
+	};
 
 	const setScrollTriggerAnimation = (
 		element: HTMLElement | null,
@@ -43,12 +52,19 @@ const Service = () => {
 		);
 	};
 
-	// useEffect内で画像にフラグを設定
 	React.useEffect(() => {
 		if (typeof window !== "undefined") {
 			gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-			setScrollTriggerAnimation(titleRef.current);
+			if (titleRef.current) {
+				// titleRefの各文字に対してスクロールトリガーアニメーションを設定
+				Array.from(titleRef.current.childNodes).forEach((char, index) => {
+					if (char instanceof HTMLElement) {
+						setScrollTriggerAnimation(char, index * 0.1);
+					}
+				});
+			}
+
 			setScrollTriggerAnimation(itImageRef.current, 0.3, true);
 			setScrollTriggerAnimation(consultingImageRef.current, 0.8, true);
 
@@ -74,10 +90,11 @@ const Service = () => {
 	}, []);
 
 	return (
-		<div className="py-24 overflow-hidden bg-gray-100">
-			<div className="flex whitespace-nowrap" ref={titleRef}>
-				<p className="font-bold text-3xl ml-8 mr-5 md:text-9xl">Service</p>
-				<p className="font-bold hidden md:mt-20">サービス</p>
+		<div className="py-12 overflow-hidden bg-gray-50">
+			<div className="flex whitespace-nowrap">
+				<p className="font-bold text-3xl ml-8 mr-5 md:text-7xl" ref={titleRef}>
+					{splitText("Service")}
+				</p>
 				<MovingBalls />
 			</div>
 			<div className="flex justify-end mt-7">
