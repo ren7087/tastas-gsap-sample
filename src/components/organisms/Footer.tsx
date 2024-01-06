@@ -11,10 +11,6 @@ const Footer = () => {
 						<a href="#">マネジメントチーム</a>
 						<a href="#">お問い合わせ</a>
 						<a href="#">個人情報保護方針</a>
-						<a href="#">サイトのご利用にあたって</a>
-					</div>
-					<div>
-						<a href="#">ENGLISH</a>
 					</div>
 				</div>
 			</div>
