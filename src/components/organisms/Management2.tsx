@@ -2,7 +2,7 @@ import React from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import ManagementCard from "../card/management";
+import ManagementCard from "../atoms/card/management";
 
 const Management2 = () => {
   const titleRef = React.useRef<HTMLParagraphElement>(null);
@@ -79,13 +79,13 @@ const Management2 = () => {
       position1: "執行役員",
       position2: "最高執行責任者 COO",
       name: "鍋田 正行Masayuki NABETA",
-      marginTop: 120,
+      marginTop: 0,
     },
     {
       position1: "執行役員",
       position2: "最高品質責任者 CQO",
       name: "久米 恵美Emi KUME",
-      marginTop: 170,
+      marginTop: 70,
     },
   ];
 

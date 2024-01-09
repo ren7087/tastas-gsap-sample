@@ -1,4 +1,4 @@
-import ServieImage from "../../assets/service_03.png";
+import ServieImage from "../../../assets/service_03.png";
 
 type Props = {
   title1: string;

@@ -12,16 +12,16 @@ const ManagementCard = ({ position1, position2, name, marginTop }: Props) => {
 
   return (
     <div
-      className={`w-72 mx-auto bg-white rounded-xl border-2 botder-black md:flex md:flex-col h-max`}
+      className={`w-80 mx-auto bg-white rounded-xl border-2 botder-black md:flex md:flex-col h-max`}
       style={cardStyle}
     >
       <div className="p-8 md:flex-grow">
-        <div className="uppercase tracking-wide text-sm font-semibold">
+        <div className="uppercase tracking-wide text-lg font-semibold">
           {position1}
           <br />
           {position2}
         </div>
-        <div className="uppercase tracking-wide text-sm font-semibold">
+        <div className="pt-3 uppercase tracking-wide text-lg font-semibold">
           {name}
         </div>
       </div>
