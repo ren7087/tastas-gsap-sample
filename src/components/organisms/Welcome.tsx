@@ -2,7 +2,7 @@ import WelcomeVideo from "../../assets/welcome.webm";
 
 const Welcome = () => {
   return (
-    <div className="relative m-20">
+    <div className="relative" style={{ height: "600px" }}>
       <video
         autoPlay
         muted
@@ -10,14 +10,16 @@ const Welcome = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src={WelcomeVideo} type="video/webm" />
+        <source src={WelcomeVideo} type="video/webm" style={{ border: 0 }} />
         Your browser does not support the video tag.
       </video>
       <div className="relative z-10">
-        <div className="border-2 border-blue px-4 py-28 font-bold text-3xl rounded-lg text-white">
-          ようこそ
+        <div className="px-20 py-40 font-bold text-right text-6xl rounded-lg text-white">
+          <span className="text-5xl pb-3">ようこそ</span>
           <br />
-          デジタル化がもたらすビジネス変革の時代へ
+          デジタル化がもたらす
+          <br />
+          ビジネス変革の時代へ
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import ServieImage from "../../../assets/service_03.png";
+import BussinessImage from "../../../assets/bussiness01.png";
 
 type Props = {
   title1: string;
@@ -14,18 +14,20 @@ const ServiceCard = ({ title1, title2, description, marginTop }: Props) => {
 
   return (
     <div
-      className={`max-w-md mx-auto bg-white rounded-xl overflow-hidden border-2 botder-black md:flex md:flex-col h-max`}
+      className={`max-w-md mx-auto bg-white overflow-hidden md:flex md:flex-col h-max`}
       style={cardStyle}
     >
-      <div className="md:flex-shrink-0 p-3">
-        <img className="w-full object-cover" src={ServieImage} alt="Card" />
+      <div className="md:flex-shrink-0">
+        <img className="w-full object-cover" src={BussinessImage} alt="Card" />
       </div>
-      <div className="p-3 md:flex-grow">
-        <div className="uppercase tracking-wide text-sm font-bold">
+      <div className="px-5 py-7 bg-sky-600 text-white md:flex-grow text-center">
+        <div className="uppercase tracking-wide text-sm font-serif">
           {title1}
         </div>
-        <div className="uppercase tracking-wide text-m font-bold">{title2}</div>
-        <p className="mt-2 text-gray-600">{description}</p>
+        <div className="uppercase tracking-wide text-2xl font-bold py-2">
+          {title2}
+        </div>
+        <p className="mt-2 pt-3 border-t-2 border-white">{description}</p>
       </div>
     </div>
   );

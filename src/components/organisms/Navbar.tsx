@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <nav className="bg-white border-gray-200" style={{ height: "70px" }}>
+    <nav style={{ height: "70px" }}>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="self-center text-2xl font-semibold whitespace-nowrap">
@@ -35,7 +35,7 @@ const Navbar = () => {
               </a>
             </li>
             <li className="m-auto">
-              <button className="block py-2 px-3 bg-yellow-600 text-white rounded-full">
+              <button className="block py-2 px-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-full">
                 お問い合わせ
               </button>
             </li>
