@@ -1,13 +1,13 @@
-import React from "react";
-import ServiceCard from "../atoms/card/service";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import ServiceCard from "../atoms/card/service";
+import Button from "../atoms/button";
 
 const Service2 = () => {
-  const titleRef = React.useRef<HTMLParagraphElement>(null);
+  const titleRef = useRef<HTMLParagraphElement>(null);
 
-  // テキストを文字ごとに分割する関数の型定義
   const splitText = (text: string): JSX.Element[] => {
     return text.split("").map((char, index) => (
       <span key={index} style={{ display: "inline-block" }}>
@@ -37,22 +37,20 @@ const Service2 = () => {
           onEnterBack: () => console.log("Element entered back"),
           onLeaveBack: () => {
             if (isImage) {
-              // スクロールバック時に画像をフェードアウト
               gsap.to(element, { opacity: 0, duration: 1.5 });
             }
           },
-          toggleActions: "play none none reset", // toggleActionsを変更
+          toggleActions: "play none none reset",
         },
       }
     );
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof window !== "undefined") {
       gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
       if (titleRef.current) {
-        // titleRefの各文字に対してスクロールトリガーアニメーションを設定
         Array.from(titleRef.current.childNodes).forEach((char, index) => {
           if (char instanceof HTMLElement) {
             setScrollTriggerAnimation(char, index * 0.1);
@@ -64,18 +62,24 @@ const Service2 = () => {
       gsap.utils
         .toArray<HTMLElement>(".service-card")
         .forEach((card, index) => {
-          gsap.from(card.children, {
-            opacity: 0,
-            y: 20,
-            duration: 1.5,
-            delay: 0.5 + index * 0.2,
-            scrollTrigger: {
-              trigger: card,
-              start: "top bottom",
-              end: "center center",
-              toggleActions: "play none none reset",
-            },
-          });
+          gsap.fromTo(
+            card,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.5,
+              delay: 0.5 + index * 0.2,
+              scrollTrigger: {
+                trigger: card,
+                start: "top bottom",
+                end: "center center",
+                onEnter: () => console.log("Element entered"),
+                onEnterBack: () => console.log("Element entered back"),
+                toggleActions: "play none none reset",
+              },
+            }
+          );
         });
     }
   }, []);
@@ -116,21 +120,22 @@ const Service2 = () => {
   return (
     <>
       <div className="flex whitespace-nowrap mt-10">
-        <p className="font-bold text-3xl ml-8 mr-5 md:text-7xl" ref={titleRef}>
+        <p
+          className="split-text font-bold text-3xl ml-8 mr-5 md:text-7xl"
+          ref={titleRef}
+        >
           {splitText("Service")}
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mx-20 my-10">
         {cardData.map((data, index) => (
           <div className="service-card" key={index}>
-            <ServiceCard key={index} {...data} />
+            <ServiceCard {...data} />
           </div>
         ))}
       </div>
       <div className="flex justify-center mt-10">
-        <button className="border-2 border-black font-bold py-2 px-4 rounded">
-          {`Read More >`}
-        </button>
+        <Button text="Read More >" />
       </div>
     </>
   );

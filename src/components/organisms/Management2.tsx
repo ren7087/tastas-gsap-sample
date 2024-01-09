@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import ManagementCard from "../atoms/card/management";
+import Button from "../atoms/button";
 
 const Management2 = () => {
   const titleRef = useRef<HTMLParagraphElement>(null);
@@ -61,18 +62,24 @@ const Management2 = () => {
       gsap.utils
         .toArray<HTMLElement>(".management-card")
         .forEach((card, index) => {
-          gsap.from(card.children, {
-            opacity: 0,
-            y: 20,
-            duration: 1.5,
-            delay: 0.5 + index * 0.2,
-            scrollTrigger: {
-              trigger: card,
-              start: "top bottom",
-              end: "center center",
-              toggleActions: "play none none reset",
-            },
-          });
+          gsap.fromTo(
+            card,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.5,
+              delay: 0.5 + index * 0.2,
+              scrollTrigger: {
+                trigger: card,
+                start: "top bottom",
+                end: "center center",
+                onEnter: () => console.log("Element entered"),
+                onEnterBack: () => console.log("Element entered back"),
+                toggleActions: "play none none reset",
+              },
+            }
+          );
         });
     }
   }, []);
@@ -119,9 +126,7 @@ const Management2 = () => {
         ))}
       </div>
       <div className="flex justify-center mt-10">
-        <button className="border-2 border-black font-bold py-2 px-4 rounded">
-          {`Read More >`}
-        </button>
+        <Button text="Read More >" />
       </div>
     </>
   );
