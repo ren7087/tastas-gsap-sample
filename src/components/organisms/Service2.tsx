@@ -59,6 +59,24 @@ const Service2 = () => {
           }
         });
       }
+
+      // Create staggered animation for ServiceCard
+      gsap.utils
+        .toArray<HTMLElement>(".service-card")
+        .forEach((card, index) => {
+          gsap.from(card.children, {
+            opacity: 0,
+            y: 20,
+            duration: 1.5,
+            delay: 0.5 + index * 0.2,
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom",
+              end: "center center",
+              toggleActions: "play none none reset",
+            },
+          });
+        });
     }
   }, []);
 
@@ -102,9 +120,11 @@ const Service2 = () => {
           {splitText("Service")}
         </p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mx-20 my-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mx-20 my-10">
         {cardData.map((data, index) => (
-          <ServiceCard key={index} {...data} />
+          <div className="service-card" key={index}>
+            <ServiceCard key={index} {...data} />
+          </div>
         ))}
       </div>
       <div className="flex justify-center mt-10">

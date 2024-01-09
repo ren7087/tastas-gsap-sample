@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import ManagementCard from "../atoms/card/management";
 
 const Management2 = () => {
-  const titleRef = React.useRef<HTMLParagraphElement>(null);
+  const titleRef = useRef<HTMLParagraphElement>(null);
 
-  // テキストを文字ごとに分割する関数の型定義
   const splitText = (text: string): JSX.Element[] => {
     return text.split("").map((char, index) => (
       <span key={index} style={{ display: "inline-block" }}>
@@ -37,28 +36,44 @@ const Management2 = () => {
           onEnterBack: () => console.log("Element entered back"),
           onLeaveBack: () => {
             if (isImage) {
-              // スクロールバック時に画像をフェードアウト
               gsap.to(element, { opacity: 0, duration: 1.5 });
             }
           },
-          toggleActions: "play none none reset", // toggleActionsを変更
+          toggleActions: "play none none reset",
         },
       }
     );
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof window !== "undefined") {
       gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
       if (titleRef.current) {
-        // titleRefの各文字に対してスクロールトリガーアニメーションを設定
         Array.from(titleRef.current.childNodes).forEach((char, index) => {
           if (char instanceof HTMLElement) {
             setScrollTriggerAnimation(char, index * 0.1);
           }
         });
       }
+
+      // Create staggered animation for ManagementCard
+      gsap.utils
+        .toArray<HTMLElement>(".management-card")
+        .forEach((card, index) => {
+          gsap.from(card.children, {
+            opacity: 0,
+            y: 20,
+            duration: 1.5,
+            delay: 0.5 + index * 0.2,
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom",
+              end: "center center",
+              toggleActions: "play none none reset",
+            },
+          });
+        });
     }
   }, []);
 
@@ -96,9 +111,11 @@ const Management2 = () => {
           {splitText("Management Team")}
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-4 mx-20 my-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4  my-10 md:mx-20">
         {cardData.map((data, index) => (
-          <ManagementCard key={index} {...data} />
+          <div className="management-card" key={index}>
+            <ManagementCard {...data} />
+          </div>
         ))}
       </div>
       <div className="flex justify-center mt-10">
