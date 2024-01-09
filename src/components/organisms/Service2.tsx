@@ -100,7 +100,7 @@ const Service2 = () => {
     },
     {
       title1: "Consulting Service",
-      title2: "BPR、チェンジマネジメント",
+      title2: "BPR, チェンジマネジメント",
       description: `リーダーシップ、コミュニケーション他の戦略理論を組み合わせ、デジタル変革のためのBPRとチェンジマネジメントを着実に実装いたします。`,
       marginTop: 80,
     },

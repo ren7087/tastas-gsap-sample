@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import TopImage from "../../assets/top.png";
+import TokyoImage from "../../assets/tokyo.png";
 
 const Top: React.FC = () => {
-  const navbarHeight = 70;
   const imageRef = useRef<HTMLImageElement>(null);
   const titleRef = useRef<HTMLParagraphElement>(null);
 
@@ -45,13 +44,10 @@ const Top: React.FC = () => {
 
   return (
     <div className="relative">
-      <div
-        className="overflow-hidden"
-        style={{ height: `calc(100vh - ${navbarHeight}px)` }}
-      >
+      <div className="overflow-hidden" style={{ height: `100vh` }}>
         <img
           ref={imageRef}
-          src={TopImage}
+          src={TokyoImage}
           alt="top"
           className="w-full h-full"
         />
@@ -73,6 +69,52 @@ const Top: React.FC = () => {
           グローバルな視点から、ご支援いたします。
         </p>
       </div>
+      <nav className="absolute top-0 left-0 right-0 p-4">
+        <div className="max-w-screen-xl mx-auto flex justify-between items-center">
+          <a href="#" className="text-white text-2xl font-semibold">
+            AMBC
+          </a>
+          <ul className="flex space-x-8">
+            <li>
+              <a
+                href="#"
+                className="text-white hover:text-gray-300 transition duration-300"
+              >
+                サービス
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="text-white hover:text-gray-300 transition duration-300"
+              >
+                会社概要
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="text-white hover:text-gray-300 transition duration-300"
+              >
+                マネジメントチーム
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="text-white hover:text-gray-300 transition duration-300"
+              >
+                ENGLISH
+              </a>
+            </li>
+            <li>
+              <button className="bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-full px-4 py-2">
+                お問い合わせ
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
   );
 };

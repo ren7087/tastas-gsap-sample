@@ -73,7 +73,7 @@ const Management2 = () => {
             {splitText("Team")}
           </p>
           <div className="mt-7">
-            <Button text="Read More" />
+            <Button text="READ MORE" />
           </div>
         </div>
         <div className="w-8/12">
