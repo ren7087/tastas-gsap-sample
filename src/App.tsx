@@ -1,4 +1,4 @@
-import Footer2 from "./components/organisms/Footer2";
+import Footer from "./components/organisms/Footer";
 import Management2 from "./components/organisms/Management2";
 import Navbar from "./components/organisms/Navbar";
 import Service2 from "./components/organisms/Service2";
@@ -13,7 +13,7 @@ function App() {
       <Service2 />
       <Welcome />
       <Management2 />
-      <Footer2 />
+      <Footer />
     </>
   );
 }

@@ -100,18 +100,6 @@ const Management2 = () => {
           <p className="text-3xl font-bold pt-3">瀬賀 利明</p>
         </div>
       </div>
-      <div className="flex justify-center mt-10 bg-blue-500 m-auto py-5 rounded-full">
-        <div className="w-1/2 flex text-center text-2xl m-auto font-bold border-r-2 border-white">
-          <p className="m-auto">株式会社AMBC</p>
-          <button className="ml-1 text-sm border-2  m-auto border-white px-5 rounded-full">
-            会社概要
-          </button>
-        </div>
-        <div className="w-1/2 text-sm ml-5">
-          <p>105-0003 東京都港区西新橋1-18-6 クロスオフィス内幸町3階</p>
-          <p>TEL 03-6206-1480 FAX 03-6206-1481</p>
-        </div>
-      </div>
     </div>
   );
 };
