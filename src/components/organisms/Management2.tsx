@@ -94,7 +94,9 @@ const Management2 = () => {
           皆様のご支援ご鞭撻を賜りますよう、宜しくお願い申し上げます。
         </div>
       </div>
-      <ScrollCard2 managementTeam={ManagementTeamData2} />
+      <div className="max-h-auto">
+        <ScrollCard2 managementTeam={ManagementTeamData2} />
+      </div>
     </div>
   );
 };

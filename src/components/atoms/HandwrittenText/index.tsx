@@ -11,7 +11,7 @@ const HandwrittenText = (props: Props) => {
   };
 
   return (
-    <div style={handwrittenTextStyle} className="absolute">
+    <div style={handwrittenTextStyle} className="absolute text-center">
       {props.name}
     </div>
   );

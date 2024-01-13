@@ -56,7 +56,7 @@ const ScrollCard2 = ({ managementTeam }: Props) => {
         start: "top-=0 top",
         end: "bottom",
         pin: true,
-        pinSpacing: true,
+        pinSpacing: false,
         onEnter: () => {
           gsap.to(card, { autoAlpha: 1 });
           if (index !== 0) {
@@ -92,7 +92,6 @@ const ScrollCard2 = ({ managementTeam }: Props) => {
           ref={(el: HTMLDivElement) => (cardsRef.current[index] = el)}
           className="card"
           key={index}
-          style={{ visibility: index === 0 ? "visible" : "hidden" }} // First card is always visible
         >
           <div className="relative py-20 flex">
             <img src={BuildingImage} alt="building" className="w-full h-96" />

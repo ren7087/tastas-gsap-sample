@@ -1,7 +1,10 @@
 const Footer = () => {
   return (
-    <footer className="bg-sky-950 text-white text-center py-10">
-      <div className="flex justify-center mb-10 bg-blue-500 mx-20 py-5 rounded-full">
+    <footer className="bg-sky-950 text-white text-center py-10 relative">
+      <div
+        className="flex justify-center mb-10 bg-blue-500 mx-20 py-5 rounded-full"
+        style={{ zIndex: 100 }}
+      >
         <div className="w-1/2 flex text-center text-2xl m-auto font-bold border-r-2 border-white">
           <p className="m-auto">株式会社AMBC</p>
           <button className="ml-1 text-sm border-2  m-auto border-white px-5 rounded-full">
