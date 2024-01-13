@@ -3,7 +3,7 @@ import { ManagementTeam } from "./types/type";
 export const ManagementTeamData: ManagementTeam = [
   {
     name: "瀬賀 利明",
-    position: "CEO",
+    position: "代表取締役 / 最高経営責任者 CEO",
     career: `経営・ITコンサルティング業界に、25年以上にわたって従事。大学卒業後に大手鉄鋼会社にて製鉄所向けプロセスコンピュータの企画・開発を担当し、事業部門の最年少係長としてシステム開発やコンサルテーションを手がける。その後、米国系 大手IT コンサルファームに入社し、SCM、CRM、e調達等のソリューションビジネスを展開し、日本オフィス取締役、米国本社副社長を歴任。グローバルIT会社の代表取締役CEOとして短期間にビジネス基盤を整備し成長軌道にのせて、大手証券会社より出資を受けグループ会社化。その後グローバルファンドのオペレーティングパートナとして、主にIT、ハイテク領域での案件探索及び投資先企業の企業価値向上を担当。 `,
   },
   {
@@ -23,5 +23,28 @@ export const ManagementTeamData: ManagementTeam = [
     position: "CQO",
     career:
       "通信、ITサービス業界に30年以上にわたり従事。外資系コンピュータ会社にて通信事業者向け基幹系システムの設計・開発・プロジェクト管理に携わる。また、外資系通信機器会社でネットワーク網構築のプロジェクト管理及び新製品の日本市場初導入に携わる。新製品の導入にあたり、新規ビジネスモデルを開発し、かつ日本品質基準デリバリーの定着化に成功した。品質改善活動の成果に対し通信事業者から優秀ベンダー賞を2年連続して受賞。山形大学卒　情報工学専攻。",
+  },
+];
+
+export const ManagementTeamData2: ManagementTeam = [
+  {
+    name: "瀬賀 利明",
+    name2: "Toshiaki Sega",
+    position: "代表取締役 / 最高経営責任者 CEO",
+  },
+  {
+    name: "市川 至",
+    name2: "Itchikawa Itaru",
+    position: "執行役員 / 最高技術責任者 CTO",
+  },
+  {
+    name: "鍋田 正行",
+    name2: "Masayuki Nabeta",
+    position: "執行役員 / 最高執行責任者 COO",
+  },
+  {
+    name: "久米 恵美",
+    name2: "Emi Kume",
+    position: "執行役員 / 最高品質責任者CQO",
   },
 ];

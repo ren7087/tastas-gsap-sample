@@ -1,4 +1,8 @@
-const HandwrittenText = () => {
+type Props = {
+  name?: string;
+};
+
+const HandwrittenText = (props: Props) => {
   const handwrittenTextStyle = {
     fontFamily: "Dancing Script, cursive",
     fontSize: "48px",
@@ -8,7 +12,7 @@ const HandwrittenText = () => {
 
   return (
     <div style={handwrittenTextStyle} className="absolute">
-      Toshiaki Sega
+      {props.name}
     </div>
   );
 };

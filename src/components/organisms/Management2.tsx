@@ -2,9 +2,9 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import BuildingImage from "../../assets/building.png";
 import Button from "../atoms/button";
-import HandwrittenText from "../atoms/HandwrittenText";
+import ScrollCard2 from "../molecles/ScrollCard2";
+import { ManagementTeamData2 } from "../../constants";
 
 const Management2 = () => {
   const titleRef = useRef<HTMLParagraphElement>(null);
@@ -94,14 +94,7 @@ const Management2 = () => {
           皆様のご支援ご鞭撻を賜りますよう、宜しくお願い申し上げます。
         </div>
       </div>
-      <div className="relative py-20">
-        <img src={BuildingImage} alt="building" className="w-full h-96" />
-        <div className="absolute bottom-0 right-0 w-1/4 p-7 pb-12 bg-gradient-to-r from-purple-500 to-blue-500 text-white">
-          <p className="text-sm">代表取締役 / 最高経営責任者 CEO</p>
-          <p className="text-3xl font-bold pt-3">瀬賀 利明</p>
-          <HandwrittenText />
-        </div>
-      </div>
+      <ScrollCard2 managementTeam={ManagementTeamData2} />
     </div>
   );
 };

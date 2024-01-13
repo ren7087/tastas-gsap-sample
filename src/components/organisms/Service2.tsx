@@ -59,29 +59,16 @@ const Service2 = () => {
         });
       }
 
-      // Create staggered animation for ServiceCard
-      gsap.utils
-        .toArray<HTMLElement>(".service-card")
-        .forEach((card, index) => {
-          gsap.fromTo(
-            card,
-            { opacity: 0, y: 20 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1.5,
-              delay: 0.5 + index * 0.2,
-              scrollTrigger: {
-                trigger: card,
-                start: "top bottom",
-                end: "center center",
-                onEnter: () => console.log("Element entered"),
-                onEnterBack: () => console.log("Element entered back"),
-                toggleActions: "play none none reset",
-              },
-            }
-          );
-        });
+      gsap.to(".service-card", {
+        scrollTrigger: {
+          trigger: ".service-container",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.1,
+        },
+        yPercent: -35, // Y軸に沿って35%の移動
+        ease: "power2.out",
+      });
     }
   }, []);
 
@@ -122,11 +109,9 @@ const Service2 = () => {
     <div
       style={{
         backgroundImage: `url(${ServiceImage})`,
-        backgroundSize: "cover", // 画像を可能な限り広げて表示
-        backgroundAttachment: "fixed", // スクロール時に背景画像を固定
         backgroundPosition: "center center", // 画像を中央に配置
       }}
-      className="p-20"
+      className="pt-20"
     >
       <div className="text-right whitespace-nowrap">
         <p
@@ -139,7 +124,7 @@ const Service2 = () => {
           <Button text="READ MORE" />
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mx-20 my-10">
+      <div className="service-container grid grid-cols-1 md:grid-cols-3 gap-4 mx-20 mt-10">
         {cardData.map((data, index) => (
           <div className="service-card" key={index}>
             <ServiceCard {...data} />
