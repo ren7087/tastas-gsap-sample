@@ -1,15 +1,42 @@
-import BussinessImage from "../../../assets/bussiness01.png";
+import Bussiness1Image from "../../../assets/bussiness01.png";
+import Bussiness2Image from "../../../assets/bussiness02.png";
+import Bussiness3Image from "../../../assets/bussiness03.png";
+import Bussiness4Image from "../../../assets/bussiness04.png";
+import Bussiness5Image from "../../../assets/bussiness05.png";
 
 type Props = {
   title1: string;
   title2: string;
   description: string;
   marginTop?: number;
+  index?: number;
 };
 
-const ServiceCard = ({ title1, title2, description, marginTop }: Props) => {
+const ServiceCard = ({
+  title1,
+  title2,
+  description,
+  marginTop,
+  index = 0,
+}: Props) => {
   const cardStyle = {
     marginTop: marginTop ? `${marginTop}px` : undefined,
+  };
+
+  const imgDisplay = (index: number) => {
+    // indexによって表示する画像を変える
+    switch (index) {
+      case 0:
+        return Bussiness1Image;
+      case 1:
+        return Bussiness2Image;
+      case 2:
+        return Bussiness3Image;
+      case 3:
+        return Bussiness4Image;
+      case 4:
+        return Bussiness5Image;
+    }
   };
 
   return (
@@ -18,7 +45,11 @@ const ServiceCard = ({ title1, title2, description, marginTop }: Props) => {
       style={cardStyle}
     >
       <div className="md:flex-shrink-0">
-        <img className="w-full object-cover" src={BussinessImage} alt="Card" />
+        <img
+          className="w-full object-cover h-56 md:h-48"
+          src={imgDisplay(index)}
+          alt="Card"
+        />
       </div>
       <div className="px-5 py-7 bg-sky-600 text-white md:flex-grow text-center">
         <div className="uppercase tracking-wide text-sm font-serif">

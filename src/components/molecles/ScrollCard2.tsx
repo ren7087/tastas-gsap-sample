@@ -2,7 +2,10 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { ManagementTeam } from "../../types/type";
-import BuildingImage from "../../assets/building.png";
+import Management1Image from "../../assets/management01.png";
+import Management2Image from "../../assets/management02.png";
+import Management3Image from "../../assets/management03.png";
+import Management4Image from "../../assets/management04.png";
 import HandwrittenText from "../atoms/HandwrittenText";
 
 type Props = {
@@ -85,6 +88,20 @@ const ScrollCard2 = ({ managementTeam }: Props) => {
     };
   }, []);
 
+  const imgDisplay = (name: string) => {
+    // indexによって表示する画像を変える
+    switch (name) {
+      case "瀬賀 利明":
+        return Management1Image;
+      case "市川 至":
+        return Management2Image;
+      case "鍋田 正行":
+        return Management3Image;
+      case "久米 恵美":
+        return Management4Image;
+    }
+  };
+
   return (
     <div className="card-container mb-20">
       {managementTeam.map((person, index) => (
@@ -94,7 +111,11 @@ const ScrollCard2 = ({ managementTeam }: Props) => {
           key={index}
         >
           <div className="relative py-20 flex">
-            <img src={BuildingImage} alt="building" className="w-full h-96" />
+            <img
+              src={imgDisplay(person.name)}
+              alt="building"
+              className="w-full h-96"
+            />
             <div className="absolute text-center bottom-0 right-0 w-4/12 p-7 pb-12 bg-gradient-to-r from-purple-500 to-blue-500 text-white">
               <p className="text-sm">{person.position}</p>
               <p className="text-3xl font-bold pt-3">{person.name}</p>

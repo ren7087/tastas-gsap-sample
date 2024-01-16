@@ -62,22 +62,22 @@ const Management2 = () => {
   }, []);
 
   return (
-    <div className="bg-sky-950 text-white p-20">
-      <div className="flex">
-        <div className="w-5/12">
+    <div className="bg-sky-950 text-white p-10 md:p-20">
+      <div className="flex flex-col md:flex-row">
+        <div className="w-full md:w-5/12 flex md:block">
           <p
-            className="font-bold text-2xl mr-3 mb-4 md:text-6xl font-serif"
+            className="font-bold text-xl md:text-2xl lg:text-6xl font-serif mr-3 mb-4"
             ref={titleRef}
           >
             {splitText("Management")}
             <br />
             {splitText("Team")}
           </p>
-          <div className="mt-7">
+          <div className="mt-3 md:mt-7">
             <Button text="READ MORE" />
           </div>
         </div>
-        <div className="w-8/12">
+        <div className="w-full md:w-8/12 pt-10 md:pt-0 md:pl-8">
           激変する社会情勢やグローバル競争の激化、企業間の合従連衡、
           デジタル変革の進展など、 企業を取り巻く事業環境は激しく変化しており、
           企業はこれら外部の変化に、 俊敏かつ柔軟に対応する経営が求
@@ -94,7 +94,7 @@ const Management2 = () => {
           皆様のご支援ご鞭撻を賜りますよう、宜しくお願い申し上げます。
         </div>
       </div>
-      <div className="max-h-auto">
+      <div className="max-h-auto mt-10">
         <ScrollCard2 managementTeam={ManagementTeamData2} />
       </div>
     </div>

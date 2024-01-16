@@ -6,7 +6,7 @@ import ServiceCard from "../atoms/card/service";
 import Button from "../atoms/button";
 import ServiceImage from "../../assets/service01.png";
 
-const Service2 = () => {
+const ServiceSP = () => {
   const titleRef = useRef<HTMLParagraphElement>(null);
 
   const splitText = (text: string): JSX.Element[] => {
@@ -59,16 +59,24 @@ const Service2 = () => {
         });
       }
 
-      gsap.to(".service-card", {
-        scrollTrigger: {
-          trigger: ".service-container",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 0.1,
-        },
-        yPercent: -35, // Y軸に沿って35%の移動
-        ease: "power2.out",
-      });
+      const wrapper = document.querySelector(".js-wrapper") as HTMLElement;
+      if (wrapper) {
+        const slides = gsap.utils.toArray(".js-scroll");
+        const slideWidth = window.innerWidth; // 各スライドの幅をビューポート幅と仮定
+        const totalScrollLength = slideWidth * (slides.length - 1); // 総スクロール量を計算
+
+        gsap.to(slides, {
+          x: () => -totalScrollLength,
+          ease: "none",
+          scrollTrigger: {
+            trigger: wrapper,
+            start: "top top",
+            end: () => `+=${totalScrollLength}`,
+            pin: true,
+            scrub: true,
+          },
+        });
+      }
     }
   }, []);
 
@@ -77,40 +85,35 @@ const Service2 = () => {
       title1: "Consulting Service",
       title2: "経営戦略・事業戦略",
       description: `デジタル変革の果実を先取りして企業価値最大化と競争優位性を確立する経営戦略・事業戦略の策定と、戦略の具体化に向けた施策の定義と実行計画の作成をご支援することで、企業の変革をともに成し遂げます。`,
-      marginTop: -100,
     },
     {
       title1: "Consulting Service",
       title2: "ソリューション導入",
       description: `ビジネスとテクノロジーの融合を正しく理解し、変革に伴うリスクを管理しつつ、ビジネス成果を迅速かつ確実に実現するソリューションを確実にお届け致します。`,
-      marginTop: -20,
     },
     {
       title1: "Consulting Service",
       title2: "BPR, チェンジマネジメント",
       description: `リーダーシップ、コミュニケーション他の戦略理論を組み合わせ、デジタル変革のためのBPRとチェンジマネジメントを着実に実装いたします。`,
-      marginTop: 80,
     },
     {
       title1: "Consulting Service",
       title2: "M&A、企業価値評価",
       description: `専門性の高いコンサルタントが顧客企業の全体像を見据え、顧客企業の立場にたったプロジェクト推進をおこない、プロジェクトを確実に成功へと導きます`,
-      marginTop: -60,
     },
     {
       title1: "IT Service",
       title2: "ITシステム開発",
       description: `オブジェクト指向型ソフトウェア開発に関わる業界最高レベルの技術知識と、多種多様な業界に関わる業務知見を駆使することで、ITシステムの開発をご支援いたします。`,
-      marginTop: 0,
     },
   ];
 
   return (
     <div
-      className="pt-20 bg-center bg-cover"
+      className="pt-20 bg-center bg-cover h-screen overflow-hidden"
       style={{ backgroundImage: `url(${ServiceImage})` }}
     >
-      <div className="text-right whitespace-nowrap">
+      <div className="text-right whitespace-nowrap title-text">
         <p
           className="font-bold text-3xl text-white font-serif ml-8 mr-5 md:text-7xl"
           ref={titleRef}
@@ -121,10 +124,13 @@ const Service2 = () => {
           <Button text="READ MORE" />
         </div>
       </div>
-      <div className="service-container grid grid-cols-1 md:grid-cols-3 gap-4 mx-20 mt-10">
+      <div
+        className="flex h-screen overflow-x-hidden js-wrapper"
+        style={{ width: `${100 * cardData.length}%` }}
+      >
         {cardData.map((data, index) => (
-          <div className="service-card" key={index}>
-            <ServiceCard {...data} index={index} />
+          <div className="flex-shrink-0 w-screen js-scroll" key={index}>
+            <ServiceCard {...data} />
           </div>
         ))}
       </div>
@@ -132,4 +138,4 @@ const Service2 = () => {
   );
 };
 
-export default Service2;
+export default ServiceSP;
