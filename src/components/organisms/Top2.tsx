@@ -40,6 +40,7 @@ const Top2: React.FC = () => {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
+        controls={false}
       >
         <source src={TokyoVideo} type="video/mp4" />
         Your browser does not support the video tag.

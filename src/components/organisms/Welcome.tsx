@@ -9,6 +9,7 @@ const Welcome = () => {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
+        controls={false}
       >
         <source src={WelcomeVideo} type="video/mp4" />
         Your browser does not support the video tag.
