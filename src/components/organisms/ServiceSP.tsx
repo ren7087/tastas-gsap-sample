@@ -58,25 +58,6 @@ const ServiceSP = () => {
           }
         });
       }
-
-      const wrapper = document.querySelector(".js-wrapper") as HTMLElement;
-      if (wrapper) {
-        const slides = gsap.utils.toArray(".js-scroll");
-        const slideWidth = window.innerWidth; // 各スライドの幅をビューポート幅と仮定
-        const totalScrollLength = slideWidth * (slides.length - 1); // 総スクロール量を計算
-
-        gsap.to(slides, {
-          x: () => -totalScrollLength,
-          ease: "none",
-          scrollTrigger: {
-            trigger: wrapper,
-            start: "top top",
-            end: () => `+=${totalScrollLength}`,
-            pin: true,
-            scrub: true,
-          },
-        });
-      }
     }
   }, []);
 
@@ -110,26 +91,23 @@ const ServiceSP = () => {
 
   return (
     <div
-      className="pt-20 bg-center bg-cover h-screen overflow-hidden"
+      className="py-20 bg-center bg-cover overflow-hidden"
       style={{ backgroundImage: `url(${ServiceImage})` }}
     >
       <div className="text-right whitespace-nowrap title-text">
         <p
-          className="font-bold text-3xl text-white font-serif ml-8 mr-5 md:text-7xl"
+          className="font-bold text-white font-serif mr-10 text-7xl"
           ref={titleRef}
         >
           {splitText("Service")}
         </p>
-        <div className="mr-16 mt-5">
+        <div className="mr-8 mt-3 sm:mr-16 sm:mt-5">
           <Button text="READ MORE" />
         </div>
       </div>
-      <div
-        className="flex h-screen overflow-x-hidden js-wrapper"
-        style={{ width: `${100 * cardData.length}%` }}
-      >
+      <div className="px-5">
         {cardData.map((data, index) => (
-          <div className="flex-shrink-0 w-screen js-scroll" key={index}>
+          <div className="my-10" key={index}>
             <ServiceCard {...data} />
           </div>
         ))}

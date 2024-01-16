@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { CSSPlugin } from "gsap/CSSPlugin";
 import TokyoVideo from "../../assets/tokyo.mp4";
+
+gsap.registerPlugin(CSSPlugin);
 
 const Top2: React.FC = () => {
   const titleRef = useRef<HTMLParagraphElement>(null);
@@ -15,15 +18,17 @@ const Top2: React.FC = () => {
 
   useEffect(() => {
     if (titleRef.current) {
-      gsap.fromTo(
-        titleRef.current.childNodes,
-        { autoAlpha: 0, y: 20 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          delay: (i) => i * 0.1, // 0.1秒ごとに順に表示
-        }
-      );
+      titleRef.current.childNodes.forEach((char, i) => {
+        gsap.fromTo(
+          char,
+          { autoAlpha: 0, y: 20 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            delay: i * 0.1, // 0.1秒ごとに順に表示
+          }
+        );
+      });
     }
   }, []);
 
@@ -60,7 +65,7 @@ const Top2: React.FC = () => {
           <a href="#" className="text-white text-2xl font-semibold">
             AMBC
           </a>
-          <ul className="flex justify-center font-bold sm:justify-end items-center space-x-4 sm:space-x-2 md:space-x-3 lg:space-x-4 xl:space-x-6 w-full">
+          <ul className="flex font-bold justify-end items-center space-x-4 sm:space-x-2 md:space-x-3 lg:space-x-4 xl:space-x-6 w-full">
             <li className="hidden sm:block">
               <a
                 href="#"
