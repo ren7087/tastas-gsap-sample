@@ -87,7 +87,7 @@ const ScrollCard3 = ({ managementTeam }: Props) => {
       {managementTeam.map((person, index) => (
         <div
           ref={(el: HTMLDivElement) => (cardsRef.current[index] = el)}
-          className="card relative py-20 md:flex"
+          className="card relative py-16 md:flex"
           key={index}
           style={{ opacity: index === 0 ? 1 : 0 }}
         >
