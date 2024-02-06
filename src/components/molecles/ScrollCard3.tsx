@@ -34,6 +34,13 @@ const ScrollCard3 = ({ managementTeam }: Props) => {
         stagger: 0.3,
         ease: "power2.out",
       });
+      gsap.from(element.querySelectorAll(".num-info"), {
+        duration: 0.5,
+        autoAlpha: 0,
+        y: 100,
+        stagger: 0.3,
+        ease: "power2.out",
+      });
     };
 
     cardsRef.current.forEach((card, index) => {
@@ -84,13 +91,27 @@ const ScrollCard3 = ({ managementTeam }: Props) => {
           key={index}
           style={{ opacity: index === 0 ? 1 : 0 }}
         >
+          {/* スマホ画面の場合 */}
+          <div className="flex md:hidden">
+            <p className="text-8xl">0</p>
+            <p className="text-8xl num-info">{index + 1}</p>
+            <p className="text-3xl text-gray-300 mt-12 ml-4">/4</p>
+          </div>
+          {/* ここまで */}
           <img
             src={imgDisplay(person.name)}
             alt="management"
             className="w-full h-96 md:h-[500px]"
           />
+          {/* PC画面の場合 */}
           <div className="absolute text-center bottom-0 right-0 p-7 pb-12 bg-gradient-to-r from-purple-500 to-blue-500 text-white w-4/12 hidden md:block">
             <p className="text-sm text-info">{person.position}</p>
+            <p className="text-3xl font-bold pt-3 text-info">{person.name}</p>
+            <HandwrittenText name={person.name2} />
+          </div>
+          {/* スマホ画面の場合 */}
+          <div className="text-center mt-10 text-white md:hidden">
+            <p className="text-sm font-bold text-info">{person.position}</p>
             <p className="text-3xl font-bold pt-3 text-info">{person.name}</p>
             <HandwrittenText name={person.name2} />
           </div>
