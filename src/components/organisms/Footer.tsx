@@ -10,7 +10,7 @@ const Footer = () => {
 
     ScrollTrigger.create({
       trigger: ".service-card3",
-      start: "top-=200 top",
+      start: "top-=50 top",
       end: "bottom",
       onEnter: () =>
         gsap.set(footerRef.current, { position: "fixed", bottom: 0 }),
