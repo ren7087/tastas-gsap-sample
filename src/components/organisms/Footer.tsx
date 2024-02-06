@@ -1,13 +1,13 @@
 const Footer = () => {
   return (
-    <footer className="bg-primaryBG text-white text-center py-10 relative">
+    <footer className="bg-primaryBG text-white text-center py-10 relative p-10">
       <div
         className="flex flex-col md:flex-row justify-center mb-10 bg-primarySkyBlue mx-4 md:mx-20 py-5 rounded-full"
         style={{ zIndex: 100 }}
       >
         <div className="w-full md:w-1/2 flex text-center text-2xl m-auto font-bold border-r-2 border-white">
           <p className="m-auto">株式会社AMBC</p>
-          <button className="ml-1 text-sm border-2  m-auto border-white px-5 rounded-full">
+          <button className="ml-1 text-sm border-2 px-5 py-2 m-auto border-white rounded-full">
             会社概要
           </button>
         </div>
@@ -18,7 +18,7 @@ const Footer = () => {
       </div>
       <div className="flex flex-col md:flex-row">
         <div className="items-center m-auto w-full md:w-2/12">
-          <span className="font-bold text-lg">AMBC INC.</span>
+          <span className="font-bold text-4xl">AMBC INC.</span>
         </div>
         <div className="font-bold w-full md:w-7/12">
           <div className="space-x-4">
@@ -48,8 +48,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="w-full md:w-3/12 mt-4 md:mt-0">
-          <p className="text-gray-400">
+        <div className="w-full md:w-3/12 mt-4 md:m-auto">
+          <p className="text-gray-400 text-sm">
             Copyright © AMBC Inc. All Rights Reserved.
           </p>
         </div>
