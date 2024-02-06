@@ -108,7 +108,7 @@ const ServiceSP = () => {
       <div className="px-5">
         {cardData.map((data, index) => (
           <div className="my-10" key={index}>
-            <ServiceCard {...data} />
+            <ServiceCard {...data} index={index} />
           </div>
         ))}
       </div>
