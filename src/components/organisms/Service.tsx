@@ -27,7 +27,7 @@ const Service = () => {
       {
         opacity: 1,
         y: 0, // 最終状態: 通常の位置
-        duration: 0.5,
+        duration: 0.3,
         delay: delay,
         scrollTrigger: {
           trigger: element,
@@ -46,7 +46,7 @@ const Service = () => {
       if (titleRef.current) {
         Array.from(titleRef.current.childNodes).forEach((char, index) => {
           if (char instanceof HTMLElement) {
-            setScrollTriggerAnimation(char, index * 0.05);
+            setScrollTriggerAnimation(char, index * 0.1);
           }
         });
       }
@@ -55,7 +55,7 @@ const Service = () => {
       gsap.utils
         .toArray<HTMLElement>(".service-card")
         .forEach((card, index) => {
-          setScrollTriggerAnimation(card, 0.2 + index * 0.4);
+          setScrollTriggerAnimation(card, 0.2 + index * 0.2);
         });
     }
   }, []);
@@ -75,7 +75,7 @@ const Service = () => {
     },
     {
       title1: "Consulting Service",
-      title2: "BPR、チェンジマネジメント",
+      title2: `BPR、\nチェンジマネジメント`,
       description: `リーダーシップ、コミュニケーション他の戦略理論を組み合わせ、デジタル変革のためのBPRとチェンジマネジメントを着実に実装いたします。`,
       marginTop: 80,
     },

@@ -39,6 +39,20 @@ const ServiceCard = ({
     }
   };
 
+  const renderWithBreaks = (text: string) => {
+    // 改行でテキストを分割し、配列にする
+    return text.split("\n").map((line, index, array) => {
+      // 各行をspanで囲む
+      // 最後の行以外の後にはbrタグを挿入する
+      return (
+        <span key={index}>
+          {line}
+          {index < array.length - 1 && <br />}
+        </span>
+      );
+    });
+  };
+
   return (
     <div
       className={`max-w-md mx-auto bg-white overflow-hidden md:flex md:flex-col h-max`}
@@ -51,12 +65,12 @@ const ServiceCard = ({
           alt="Card"
         />
       </div>
-      <div className="px-5 py-7 bg-sky-600 text-white md:flex-grow text-center">
+      <div className="px-5 py-7 bg-primarySkyBlue text-white md:flex-grow text-center">
         <div className="uppercase tracking-wide text-sm font-serif">
           {title1}
         </div>
         <div className="uppercase tracking-wide text-2xl font-bold py-2">
-          {title2}
+          {renderWithBreaks(title2)}
         </div>
         <p className="mt-2 pt-3 border-t-2 border-white">{description}</p>
       </div>
