@@ -62,7 +62,7 @@ const Management2 = () => {
   }, []);
 
   return (
-    <div className="bg-primaryBG text-white p-10 md:p-20">
+    <div className="bg-primaryBG text-white p-10">
       <div className="flex flex-col md:flex-row">
         <div className="w-full md:w-5/12 flex md:block">
           <p
@@ -86,7 +86,10 @@ const Management2 = () => {
           皆様のご支援ご鞭撻を賜りますよう、宜しくお願い申し上げます。
         </div>
       </div>
-      <div className="max-h-auto mt-10">
+      <div
+        className="max-h-auto mt-10 service-card3"
+        style={{ height: "2000px" }}
+      >
         <ScrollCard3 managementTeam={ManagementTeamData2} />
       </div>
     </div>

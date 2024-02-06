@@ -46,7 +46,7 @@ const ScrollCard3 = ({ managementTeam }: Props) => {
     cardsRef.current.forEach((card, index) => {
       ScrollTrigger.create({
         trigger: card,
-        start: "top-=0 top",
+        start: "top-=50 top",
         end: "bottom",
         pin: true,
         pinSpacing: false,
@@ -83,11 +83,11 @@ const ScrollCard3 = ({ managementTeam }: Props) => {
   };
 
   return (
-    <div className="card-container mb-20">
+    <div className="card-container">
       {managementTeam.map((person, index) => (
         <div
           ref={(el: HTMLDivElement) => (cardsRef.current[index] = el)}
-          className="card relative py-16 md:flex"
+          className="card relative md:flex"
           key={index}
           style={{ opacity: index === 0 ? 1 : 0 }}
         >
@@ -101,7 +101,7 @@ const ScrollCard3 = ({ managementTeam }: Props) => {
           <img
             src={imgDisplay(person.name)}
             alt="management"
-            className="w-full h-96 md:h-[500px]"
+            className="w-full h-96"
           />
           {/* PC画面の場合 */}
           <div className="absolute text-center bottom-0 right-0 p-7 pb-12 bg-gradient-to-r from-purple-500 to-blue-500 text-white w-4/12 hidden md:block">
