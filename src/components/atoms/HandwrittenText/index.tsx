@@ -13,7 +13,7 @@ const HandwrittenText = (props: Props) => {
   return (
     <div
       style={handwrittenTextStyle}
-      className="md:absolute md:text-right md:right-2.5"
+      className="md:absolute md:text-right md:right-2.5 text-info2"
     >
       {props.name}
     </div>

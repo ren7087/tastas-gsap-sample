@@ -12,37 +12,53 @@ type Props = {
   managementTeam: ManagementTeam;
 };
 
-const ScrollCard2 = ({ managementTeam }: Props) => {
+const ScrollCard3 = ({ managementTeam }: Props) => {
   const cardsRef = useRef<HTMLDivElement[]>(new Array(managementTeam.length));
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    cardsRef.current.forEach((card, index) => {
-      if (!card) return;
+    const animateElementsIn = (element: HTMLDivElement) => {
+      // 上方向からのスライドイン
+      gsap.from(element.querySelectorAll(".text-info"), {
+        duration: 1.2,
+        autoAlpha: 0,
+        y: 100,
+        stagger: 0.3,
+        ease: "power2.out",
+      });
+      gsap.from(element.querySelectorAll(".text-info2"), {
+        duration: 1.5,
+        autoAlpha: 0,
+        y: 50,
+        stagger: 0.3,
+        ease: "power2.out",
+      });
+    };
 
+    cardsRef.current.forEach((card, index) => {
       ScrollTrigger.create({
         trigger: card,
         start: "top-=0 top",
         end: "bottom",
         pin: true,
         pinSpacing: false,
-        onLeave: () => {
-          gsap.to(card, { autoAlpha: 0 });
+        onEnter: () => {
+          gsap.to(card, { autoAlpha: 1 });
+          if (index !== 0) {
+            animateElementsIn(card);
+          }
         },
-        onLeaveBack: () => {
-          gsap.to(card, { autoAlpha: index === 0 ? 1 : 0 });
+        onEnterBack: () => {
+          gsap.to(card, { autoAlpha: 1 });
+          animateElementsIn(card);
         },
+        onLeave: () => gsap.to(card, { autoAlpha: 0 }),
+        onLeaveBack: () => gsap.to(card, { autoAlpha: index === 0 ? 1 : 0 }),
       });
     });
 
-    // Initial visibility for the first card
-    gsap.to(cardsRef.current[0], { autoAlpha: 1 });
-
-    return () => {
-      // Clean up all ScrollTrigger instances
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
+    return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
 
   const imgDisplay = (name: string) => {
@@ -66,6 +82,7 @@ const ScrollCard2 = ({ managementTeam }: Props) => {
           ref={(el: HTMLDivElement) => (cardsRef.current[index] = el)}
           className="card relative py-20 md:flex"
           key={index}
+          style={{ opacity: index === 0 ? 1 : 0 }}
         >
           <img
             src={imgDisplay(person.name)}
@@ -73,13 +90,8 @@ const ScrollCard2 = ({ managementTeam }: Props) => {
             className="w-full h-96 md:h-[500px]"
           />
           <div className="absolute text-center bottom-0 right-0 p-7 pb-12 bg-gradient-to-r from-purple-500 to-blue-500 text-white w-4/12 hidden md:block">
-            <p className="text-sm">{person.position}</p>
-            <p className="text-3xl font-bold pt-3">{person.name}</p>
-            <HandwrittenText name={person.name2} />
-          </div>
-          <div className="text-center mt-10 text-white md:hidden">
-            <p className="text-sm font-bold">{person.position}</p>
-            <p className="text-3xl font-bold pt-3">{person.name}</p>
+            <p className="text-sm text-info">{person.position}</p>
+            <p className="text-3xl font-bold pt-3 text-info">{person.name}</p>
             <HandwrittenText name={person.name2} />
           </div>
         </div>
@@ -88,4 +100,4 @@ const ScrollCard2 = ({ managementTeam }: Props) => {
   );
 };
 
-export default ScrollCard2;
+export default ScrollCard3;

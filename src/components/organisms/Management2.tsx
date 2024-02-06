@@ -3,8 +3,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import Button from "../atoms/button";
-import ScrollCard2 from "../molecles/ScrollCard2";
 import { ManagementTeamData2 } from "../../constants";
+import ScrollCard3 from "../molecles/ScrollCard3";
 
 const Management2 = () => {
   const titleRef = useRef<HTMLParagraphElement>(null);
@@ -28,7 +28,7 @@ const Management2 = () => {
       {
         opacity: 1,
         y: 0,
-        duration: 1.5,
+        duration: 0.5,
         delay: delay,
         scrollTrigger: {
           trigger: element,
@@ -95,7 +95,7 @@ const Management2 = () => {
         </div>
       </div>
       <div className="max-h-auto mt-10">
-        <ScrollCard2 managementTeam={ManagementTeamData2} />
+        <ScrollCard3 managementTeam={ManagementTeamData2} />
       </div>
     </div>
   );
