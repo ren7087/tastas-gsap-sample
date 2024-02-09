@@ -1,8 +1,8 @@
-import Bussiness1Image from "../../../assets/bussiness01.png";
-import Bussiness2Image from "../../../assets/bussiness02.png";
-import Bussiness3Image from "../../../assets/bussiness03.png";
-import Bussiness4Image from "../../../assets/bussiness04.png";
-import Bussiness5Image from "../../../assets/bussiness05.png";
+import Bussiness1Image from "../../../assets/service/01.jpg";
+import Bussiness2Image from "../../../assets/service/02.jpg";
+import Bussiness3Image from "../../../assets/service/03.jpg";
+import Bussiness4Image from "../../../assets/service/04.jpg";
+import Bussiness5Image from "../../../assets/service/05.jpg";
 
 type Props = {
   title1: string;

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { CSSPlugin } from "gsap/CSSPlugin";
-import TokyoVideo from "../../assets/tokyo.mp4";
+import TokyoVideo from "../../assets/tokyo-main.mp4";
 
 gsap.registerPlugin(CSSPlugin);
 

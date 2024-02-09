@@ -2,10 +2,10 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { ManagementTeam } from "../../types/type";
-import Management1Image from "../../assets/management01.png";
-import Management2Image from "../../assets/management02.png";
-import Management3Image from "../../assets/management03.png";
-import Management4Image from "../../assets/management04.png";
+import Management1Image from "../../assets/management/01.jpg";
+import Management2Image from "../../assets/management/02.jpg";
+import Management3Image from "../../assets/management/03.jpg";
+import Management4Image from "../../assets/management/04.jpg";
 import HandwrittenText from "../atoms/HandwrittenText";
 
 type Props = {

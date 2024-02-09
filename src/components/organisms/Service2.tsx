@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import ServiceCard from "../atoms/card/service";
 import Button from "../atoms/button";
-import ServiceImage from "../../assets/service01.png";
+import ServiceImage from "../../assets/service01.jpg";
 
 const Service2 = () => {
   const titleRef = useRef<HTMLParagraphElement>(null);
