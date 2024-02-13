@@ -38,19 +38,19 @@ const Welcome = () => {
             { opacity: 0 },
             {
               opacity: 1,
-              duration: 0.5,
+              duration: 1.2,
             },
             "<" // マスキングテープのアニメーションと同時に開始
           )
           .to(linesRefs.current[index], {
             scaleX: 0,
-            duration: 0.3,
+            duration: 0.5,
             transformOrigin: "right",
             ease: "none",
           })
           .to(
             text,
-            { opacity: 1, duration: 0.3 },
+            { opacity: 1, duration: 1.2 },
             ">" // マスキングテープが閉じるときにテキストを非表示にする
           );
       }
@@ -90,7 +90,7 @@ const Welcome = () => {
                 </span>
                 <div
                   ref={(el) => (linesRefs.current[index] = el)}
-                  className="absolute top-0 h-full bg-primarySkyBlue"
+                  className="absolute top-0 h-full"
                   style={{ zIndex: 10, width: "100%", left: "50%" }}
                 ></div>
               </div>
