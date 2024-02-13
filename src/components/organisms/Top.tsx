@@ -1,32 +1,22 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import TokyoImage from "../../assets/tokyo.png";
+import { CSSPlugin } from "gsap/CSSPlugin";
+import TokyoVideo from "../../assets/tokyo-main.mp4";
 
-const Top: React.FC = () => {
-  const imageRef = useRef<HTMLImageElement>(null);
+gsap.registerPlugin(CSSPlugin);
+
+const Top2: React.FC = () => {
   const titleRef = useRef<HTMLParagraphElement>(null);
 
-  // テキストを文字ごとに分割する関数の型定義
   const splitText = (text: string): JSX.Element[] => {
     return text.split("").map((char, index) => (
-      <span key={index} style={{ display: "inline-block" }}>
+      <span key={index} className="inline-block">
         {char}
       </span>
     ));
   };
 
   useEffect(() => {
-    if (imageRef.current) {
-      gsap.to(imageRef.current, {
-        scale: 1.1,
-        duration: 9,
-        ease: "power2.out",
-        repeat: -1,
-        repeatDelay: 0.5,
-        yoyo: true,
-      });
-    }
-
     if (titleRef.current) {
       titleRef.current.childNodes.forEach((char, i) => {
         gsap.fromTo(
@@ -43,29 +33,31 @@ const Top: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative">
-      <div className="overflow-hidden" style={{ height: `100vh` }}>
-        <img
-          ref={imageRef}
-          src={TokyoImage}
-          alt="top"
-          className="w-full h-full"
-        />
-      </div>
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 font-bold">
-        <p className="text-white px-4 text-xl text-center">
+    <div className="relative overflow-hidden h-screen">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        controls={false}
+      >
+        <source src={TokyoVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 font-bold px-4">
+        <p className="text-white text-center text-lg sm:text-xl md:text-2xl">
           ようこそ、デジタル化がもたらすビジネス変革の時代へ
         </p>
-        <p
+        <div
           ref={titleRef}
-          className="text-7xl text-white px-4 py-10 text-center font-serif"
+          className="text-white text-center font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl px-4 py-10"
         >
           A {splitText("Digital")} {splitText("Transformation")}
-        </p>
-        <p className="text-white px-4 text-base text-center">
+        </div>
+        <p className="text-white text-center text-sm sm:text-base md:text-lg">
           AMBCは、デジタル変革の進展に伴う経営とITの最適化を、
-          <br />
-          <br />
+          <br className="hidden sm:block" />
           グローバルな視点から、ご支援いたします。
         </p>
       </div>
@@ -74,8 +66,8 @@ const Top: React.FC = () => {
           <a href="#" className="text-white text-2xl font-semibold">
             AMBC
           </a>
-          <ul className="flex space-x-8">
-            <li>
+          <ul className="flex font-bold justify-end items-center space-x-4 sm:space-x-2 md:space-x-3 lg:space-x-4 xl:space-x-6 w-full">
+            <li className="hidden sm:block">
               <a
                 href="#"
                 className="text-white hover:text-gray-300 transition duration-300"
@@ -83,7 +75,7 @@ const Top: React.FC = () => {
                 サービス
               </a>
             </li>
-            <li>
+            <li className="hidden sm:block">
               <a
                 href="#"
                 className="text-white hover:text-gray-300 transition duration-300"
@@ -91,7 +83,7 @@ const Top: React.FC = () => {
                 会社概要
               </a>
             </li>
-            <li>
+            <li className="hidden sm:block">
               <a
                 href="#"
                 className="text-white hover:text-gray-300 transition duration-300"
@@ -99,7 +91,7 @@ const Top: React.FC = () => {
                 マネジメントチーム
               </a>
             </li>
-            <li>
+            <li className="hidden sm:block">
               <a
                 href="#"
                 className="text-white hover:text-gray-300 transition duration-300"
@@ -119,4 +111,4 @@ const Top: React.FC = () => {
   );
 };
 
-export default Top;
+export default Top2;

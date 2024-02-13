@@ -2,7 +2,11 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { ManagementTeam } from "../../types/type";
-import Management from "../../assets/management.png";
+import Management1Image from "../../assets/management/01.jpg";
+import Management2Image from "../../assets/management/02.jpg";
+import Management3Image from "../../assets/management/03.jpg";
+import Management4Image from "../../assets/management/04.jpg";
+import HandwrittenText from "../atoms/HandwrittenText";
 
 type Props = {
   managementTeam: ManagementTeam;
@@ -17,16 +21,16 @@ const ScrollCard = ({ managementTeam }: Props) => {
     const animateElementsIn = (element: HTMLDivElement) => {
       // 上方向からのスライドイン
       gsap.from(element.querySelectorAll(".text-info"), {
-        duration: 1.5,
+        duration: 1.2,
         autoAlpha: 0,
         y: 100,
         stagger: 0.3,
         ease: "power2.out",
       });
-      gsap.from(element.querySelectorAll(".text-info-positon"), {
-        duration: 1.7,
+      gsap.from(element.querySelectorAll(".text-info2"), {
+        duration: 1.5,
         autoAlpha: 0,
-        y: 100,
+        y: 30,
         stagger: 0.3,
         ease: "power2.out",
       });
@@ -37,80 +41,80 @@ const ScrollCard = ({ managementTeam }: Props) => {
         stagger: 0.3,
         ease: "power2.out",
       });
-
-      gsap.from(element.querySelectorAll(".img-info"), {
-        duration: 1.5,
-        autoAlpha: 0,
-        y: -500, // 上方向からのスタート
-        rotation: 15, // 45度の角度からスタート
-        ease: "power2.out",
-      });
     };
 
     cardsRef.current.forEach((card, index) => {
       ScrollTrigger.create({
         trigger: card,
-        start: "top-=0 top",
+        start: "top-=300 top",
         end: "bottom",
         pin: true,
         pinSpacing: false,
         onEnter: () => {
-          gsap.to(card, { autoAlpha: 1 });
+          gsap.to(card, { autoAlpha: 1, duration: 0.3 });
           if (index !== 0) {
             animateElementsIn(card);
           }
         },
         onEnterBack: () => {
-          gsap.to(card, { autoAlpha: 1 });
+          gsap.to(card, { autoAlpha: 1, duration: 0.3 });
           animateElementsIn(card);
         },
-        onLeave: () => {
-          gsap.to(card, { autoAlpha: 0 });
-        },
-        onLeaveBack: () => {
-          gsap.to(card, { autoAlpha: index === 0 ? 1 : 0 });
-        },
+        onLeave: () => gsap.to(card, { autoAlpha: 0, duration: 0.3 }),
+        onLeaveBack: () =>
+          gsap.to(card, { autoAlpha: index === 0 ? 1 : 0, duration: 0.3 }),
       });
     });
 
-    // Initial visibility for the first card
-    gsap.to(cardsRef.current[0], { autoAlpha: 1 });
-
-    return () => {
-      // Clean up all ScrollTrigger instances
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
+    return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
 
+  const imgDisplay = (name: string) => {
+    // indexによって表示する画像を変える
+    switch (name) {
+      case "瀬賀 利明":
+        return Management1Image;
+      case "市川 至":
+        return Management2Image;
+      case "鍋田 正行":
+        return Management3Image;
+      case "久米 恵美":
+        return Management4Image;
+    }
+  };
+
   return (
-    <div className="card-container mb-20">
+    <div className="card-container">
       {managementTeam.map((person, index) => (
         <div
           ref={(el: HTMLDivElement) => (cardsRef.current[index] = el)}
-          className="card flex flex-col md:flex-row min-h-screen"
+          className="card relative md:flex"
           key={index}
-          style={{ visibility: index === 0 ? "visible" : "hidden" }} // First card is always visible
+          style={{ opacity: index === 0 ? 1 : 0 }}
         >
-          <div className="w-full md:w-1/2 flex justify-center items-center">
-            <div className="p-14 text-center font-bold">
-              <div className="flex">
-                <p className="text-3xl font-bold mb-2 text-info-positon">
-                  {person.position}
-                </p>
-                <p className="text-3xl ml-5 text-info">{person.name}</p>
-              </div>
-              <p className="text-info py-14">{person.career}</p>
-              <div className="flex">
-                <p className="text-8xl">0</p>
-                <p className="text-8xl num-info">{index + 1}</p>
-                <p className="text-2xl text-gray-300 mt-12 ml-4">/4</p>
-              </div>
-            </div>
+          {/* スマホ画面の場合 */}
+          <div className="flex md:hidden">
+            <p className="text-8xl">0</p>
+            <p className="text-8xl num-info">{index + 1}</p>
+            <p className="text-3xl text-gray-300 mt-12 ml-4">/4</p>
           </div>
-          <div className="w-full md:w-1/2 flex justify-center p-14 items-center">
-            <div className="img-info text-center">
-              <img src={Management} alt="" width={500} height={800} />
-            </div>
+          {/* ここまで */}
+          <img
+            src={imgDisplay(person.name)}
+            alt="management"
+            className="w-full px-10 pb-5 h-96"
+          />
+          {/* PC画面の場合 */}
+          <div className="absolute text-center bottom-0 right-0 p-7 pb-20 mr-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white w-4/12 hidden md:block">
+            <p className="text-sm text-info">{person.position}</p>
+            <p className="text-3xl font-bold pt-3 text-info">{person.name}</p>
+            <HandwrittenText name={person.name2} />
+          </div>
+          {/* スマホ画面の場合 */}
+          <div className="text-center mt-10 text-white md:hidden">
+            <p className="text-sm font-bold text-info">{person.position}</p>
+            <p className="text-3xl font-bold pt-3 text-info">{person.name}</p>
+            <HandwrittenText name={person.name2} />
           </div>
         </div>
       ))}

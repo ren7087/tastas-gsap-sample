@@ -1,14 +1,14 @@
 import Footer from "./components/organisms/Footer";
-import Management2 from "./components/organisms/Management2";
+import Management from "./components/organisms/Management";
 import Service from "./components/organisms/Service";
 import ServiceSP from "./components/organisms/ServiceSP";
-import Top2 from "./components/organisms/Top2";
+import Top from "./components/organisms/Top";
 import Welcome from "./components/organisms/Welcome";
 
 function App() {
   return (
     <>
-      <Top2 />
+      <Top />
       <div className="md:hidden">
         <ServiceSP />
       </div>
@@ -16,7 +16,7 @@ function App() {
         <Service />
       </div>
       <Welcome />
-      <Management2 />
+      <Management />
       <Footer />
     </>
   );
