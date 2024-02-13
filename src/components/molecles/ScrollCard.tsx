@@ -98,14 +98,14 @@ const ScrollCard = ({ managementTeam }: Props) => {
           <img
             src={imgDisplay(person.name)}
             alt="management"
-            className="w-full px-10 pb-5"
+            className="w-full px-16 pb-5"
             style={{
               height: height > ManagementTeamMaxHeight ? "29rem" : "24rem",
               objectFit: "cover",
               overflow: "hidden",
             }}
           />
-          <div className="absolute text-center bottom-0 right-0 p-7 pb-20 mr-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white w-4/12 hidden md:block">
+          <div className="absolute text-center bottom-0 right-0 p-7 pb-20 mr-10 bg-gradient-to-r from-purple-500 to-blue-500 text-white w-4/12 hidden md:block">
             <p className="text-sm text-info">{person.position}</p>
             <p className="text-3xl font-bold pt-3 text-info">{person.name}</p>
             <HandwrittenText name={person.name2} />

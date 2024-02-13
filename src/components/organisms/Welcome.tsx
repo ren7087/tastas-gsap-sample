@@ -23,11 +23,11 @@ const Welcome = () => {
       })
       .to(maskRef.current, {
         width: "100%",
-        duration: 1,
+        duration: 0.5,
       })
       .to(maskRef.current, {
         scaleX: 0,
-        duration: 0.5,
+        duration: 0.3,
         transformOrigin: "right",
       });
 
