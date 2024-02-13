@@ -125,7 +125,9 @@ const Management = () => {
       </div>
       <div
         className="max-h-auto"
-        style={{ height: height > ManagementTeamMaxHeight ? "2500px" : "auto" }}
+        style={{
+          height: height > ManagementTeamMaxHeight ? "2500px" : "1800px",
+        }}
       >
         <ScrollCard managementTeam={ManagementTeamData2} />
       </div>

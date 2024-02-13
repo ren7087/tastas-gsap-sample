@@ -31,9 +31,9 @@ const ScrollCard = ({ managementTeam }: Props) => {
         ease: "power2.out",
       });
       gsap.from(element.querySelectorAll(".text-info2"), {
-        duration: 1.5,
+        duration: 0.3,
         autoAlpha: 0,
-        y: 30,
+        y: 50,
         stagger: 0.3,
         ease: "power2.out",
       });
