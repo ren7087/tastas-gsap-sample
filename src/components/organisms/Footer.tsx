@@ -3,6 +3,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { ManagementTeamMaxHeight } from "../../constants";
+import LogoImage from "../../assets/logo.png";
 
 const Footer = () => {
   const footerRef = useRef(null);
@@ -45,7 +46,7 @@ const Footer = () => {
       </div>
       <div className="flex flex-col md:flex-row">
         <div className="items-center m-auto w-full md:w-2/12">
-          <span className="font-bold text-4xl">AMBC INC.</span>
+          <img src={LogoImage} alt="logo" className="w-50 h-20 m-auto" />
         </div>
         <div className="font-bold">
           <div className="space-x-4">

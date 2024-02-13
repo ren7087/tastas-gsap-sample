@@ -2,10 +2,11 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { CSSPlugin } from "gsap/CSSPlugin";
 import TokyoVideo from "../../assets/tokyo-main.mp4";
+import LogoImage from "../../assets/logo.png";
 
 gsap.registerPlugin(CSSPlugin);
 
-const Top2: React.FC = () => {
+const Top: React.FC = () => {
   const titleRef = useRef<HTMLParagraphElement>(null);
 
   const splitText = (text: string): JSX.Element[] => {
@@ -64,7 +65,7 @@ const Top2: React.FC = () => {
       <nav className="absolute top-0 left-0 right-0 p-4">
         <div className="max-w-screen-xl mx-auto flex justify-between items-center">
           <a href="#" className="text-white text-2xl font-semibold">
-            AMBC
+            <img src={LogoImage} alt="logo" className="w-50 h-20 m-auto" />
           </a>
           <ul className="flex font-bold justify-end items-center space-x-4 sm:space-x-2 md:space-x-3 lg:space-x-4 xl:space-x-6 w-full">
             <li className="hidden sm:block">
@@ -111,4 +112,4 @@ const Top2: React.FC = () => {
   );
 };
 
-export default Top2;
+export default Top;
