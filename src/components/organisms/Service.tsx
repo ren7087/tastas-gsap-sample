@@ -4,7 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import ServiceCard from "../atoms/card/service";
 import Button from "../atoms/button";
-import ServiceImage from "../../assets/service01.jpg";
+import ServiceImage from "../../assets/service_bg.jpg";
+import { cardData } from "../../constants";
 
 const Service = () => {
   const titleRef = useRef<HTMLParagraphElement>(null);
@@ -59,39 +60,6 @@ const Service = () => {
         });
     }
   }, []);
-
-  const cardData = [
-    {
-      title1: "Consulting Service",
-      title2: "経営戦略・事業戦略",
-      description: `デジタル変革の果実を先取りして企業価値最大化と競争優位性を確立する経営戦略・事業戦略の策定と、戦略の具体化に向けた施策の定義と実行計画の作成をご支援することで、企業の変革をともに成し遂げます。`,
-      marginTop: -100,
-    },
-    {
-      title1: "Consulting Service",
-      title2: "ソリューション導入",
-      description: `ビジネスとテクノロジーの融合を正しく理解し、変革に伴うリスクを管理しつつ、ビジネス成果を迅速かつ確実に実現するソリューションを確実にお届け致します。`,
-      marginTop: -20,
-    },
-    {
-      title1: "Consulting Service",
-      title2: `BPR、\nチェンジマネジメント`,
-      description: `リーダーシップ、コミュニケーション他の戦略理論を組み合わせ、デジタル変革のためのBPRとチェンジマネジメントを着実に実装いたします。`,
-      marginTop: 80,
-    },
-    {
-      title1: "Consulting Service",
-      title2: "M&A、企業価値評価",
-      description: `専門性の高いコンサルタントが顧客企業の全体像を見据え、顧客企業の立場にたったプロジェクト推進をおこない、プロジェクトを確実に成功へと導きます。`,
-      marginTop: -60,
-    },
-    {
-      title1: "IT Service",
-      title2: "ITシステム開発",
-      description: `オブジェクト指向型ソフトウェア開発に関わる業界最高レベルの技術知識と、多種多様な業界に関わる業務知見を駆使することで、ITシステムの開発をご支援いたします。`,
-      marginTop: 0,
-    },
-  ];
 
   return (
     <div

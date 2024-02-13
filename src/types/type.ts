@@ -7,3 +7,10 @@ export type ManagementPerson = {
   image?: string;
   career?: string;
 };
+
+export type CardData = {
+  title1: string;
+  title2: string;
+  description: string;
+  marginTop?: number;
+};
