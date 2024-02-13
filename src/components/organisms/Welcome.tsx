@@ -17,7 +17,7 @@ const Welcome = () => {
           trigger: containerRef.current, // トリガーとなる要素を設定
           start: "top bottom", // ビューポートのtopがトリガー要素のcenterに達した時に開始
           end: "bottom top", // トリガー要素のbottomがビューポートのtopに達した時に終了
-          toggleActions: "play none none play", // スクロール方向に応じてアニメーションを再生・逆再生
+          toggleActions: "play none none reset",
         },
         defaults: { ease: "power2.inOut" },
       })
