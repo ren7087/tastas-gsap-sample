@@ -6,6 +6,7 @@ import Button from "../atoms/button";
 import { ManagementTeamData2, ManagementTeamMaxHeight } from "../../constants";
 import ScrollCard from "../molecles/ScrollCard";
 import { useWindowSize } from "../../hooks/useWindowSize";
+import ScrollCardSP from "../molecles/ScrollCardSP";
 
 const Management = () => {
   const managementTeamRef = useRef<HTMLDivElement>(null);
@@ -103,7 +104,7 @@ const Management = () => {
       <div className="p-10 flex flex-col  md:flex-row" ref={managementTeamRef}>
         <div className="w-full md:w-5/12 flex md:block">
           <p
-            className="font-bold text-xl md:text-2xl lg:text-6xl font-serif mr-3 mb-4"
+            className="font-bold text-lg md:text-2xl lg:text-6xl font-serif mr-3 mb-4"
             ref={titleRef}
           >
             {splitText("Management")}
@@ -114,7 +115,7 @@ const Management = () => {
             <Button text="READ MORE" />
           </div>
         </div>
-        <div className="w-full md:w-8/12 pt-10 md:pt-0 md:pl-8">
+        <div className="w-full hidden md:block md:w-8/12 pt-10 md:pt-0 md:pl-8">
           激変する社会情勢やグローバル競争の激化、企業間の合従連衡、デジタル変革の進展など、企業を取り巻く事業環境は激しく変化しており、企業はこれら外部の変化に、俊敏かつ柔軟に対応する経営が求められています。
           <br />
           我々AMBCはこれまで、誠実、信頼、謙虚、団結、自由、大胆、そして全力の7つの価値基準に基づき、職務遂行上の基準として意思決定をおこない、我々独自の企業文化をつくって参りました。
@@ -123,13 +124,18 @@ const Management = () => {
           皆様のご支援ご鞭撻を賜りますよう、宜しくお願い申し上げます。
         </div>
       </div>
+      {/* SP画面では非表示 */}
       <div
-        className="max-h-auto"
+        className="max-h-auto hidden md:block"
         style={{
           height: height > ManagementTeamMaxHeight ? "2500px" : "1800px",
         }}
       >
         <ScrollCard managementTeam={ManagementTeamData2} />
+      </div>
+      {/* PC画面では非表示 */}
+      <div className="max-h-auto md:hidden">
+        <ScrollCardSP managementTeam={ManagementTeamData2} />
       </div>
     </div>
   );

@@ -30,7 +30,7 @@ const Footer = () => {
       className="bg-primaryBG text-white text-center py-10 relative p-10 w-full"
     >
       <div
-        className="flex flex-col md:flex-row justify-center mb-10 bg-primarySkyBlue mx-4 md:mx-20 py-5 rounded-full"
+        className="hidden md:flex flex-col md:flex-row justify-center mb-10 bg-primarySkyBlue mx-4 md:mx-20 py-5 rounded-full"
         style={{ zIndex: 100 }}
       >
         <div className="flex text-center text-2xl m-auto font-bold border-r-2 border-white w-1/2">

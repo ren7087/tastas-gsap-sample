@@ -2,21 +2,14 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { ManagementTeam } from "../../types/type";
-import Management1Image from "../../assets/management/01.jpg";
-import Management2Image from "../../assets/management/02.jpg";
-import Management3Image from "../../assets/management/03.jpg";
-import Management4Image from "../../assets/management/04.jpg";
 import HandwrittenText from "../atoms/HandwrittenText";
-import { useWindowSize } from "../../hooks/useWindowSize";
-import { ManagementTeamMaxHeight } from "../../constants";
 
 type Props = {
   managementTeam: ManagementTeam;
 };
 
-const ScrollCard = ({ managementTeam }: Props) => {
+const ScrollCardSP = ({ managementTeam }: Props) => {
   const cardsRef = useRef<HTMLDivElement[]>(new Array(managementTeam.length));
-  const height = useWindowSize();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -72,40 +65,22 @@ const ScrollCard = ({ managementTeam }: Props) => {
     return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
 
-  const imgDisplay = (name: string) => {
-    // indexによって表示する画像を変える
-    switch (name) {
-      case "瀬賀 利明":
-        return Management1Image;
-      case "市川 至":
-        return Management2Image;
-      case "鍋田 正行":
-        return Management3Image;
-      case "久米 恵美":
-        return Management4Image;
-    }
-  };
-
   return (
     <div className="card-container">
       {managementTeam.map((person, index) => (
         <div
           ref={(el: HTMLDivElement) => (cardsRef.current[index] = el)}
-          className="card relative md:flex"
+          className="card relative bg-gradient-to-r from-purple-500 to-blue-500"
           key={index}
           style={{ opacity: index === 0 ? 1 : 0 }}
         >
-          <img
-            src={imgDisplay(person.name)}
-            alt="management"
-            className="w-full px-10 pb-5"
-            style={{
-              height: height > ManagementTeamMaxHeight ? "29rem" : "24rem",
-              objectFit: "cover",
-            }}
-          />
-          <div className="absolute text-center bottom-0 right-0 p-7 pb-20 mr-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white w-4/12 hidden md:block">
-            <p className="text-sm text-info">{person.position}</p>
+          <div className="flex md:hidden">
+            <p className="text-8xl">0</p>
+            <p className="text-8xl num-info">{index + 1}</p>
+            <p className="text-3xl text-gray-300 mt-12 ml-4">/4</p>
+          </div>
+          <div className="text-center mt-10 text-white">
+            <p className="text-sm font-bold text-info">{person.position}</p>
             <p className="text-3xl font-bold pt-3 text-info">{person.name}</p>
             <HandwrittenText name={person.name2} />
           </div>
@@ -115,4 +90,4 @@ const ScrollCard = ({ managementTeam }: Props) => {
   );
 };
 
-export default ScrollCard;
+export default ScrollCardSP;
