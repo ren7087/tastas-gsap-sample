@@ -30,7 +30,7 @@ const ScrollCard3 = ({ managementTeam }: Props) => {
       gsap.from(element.querySelectorAll(".text-info2"), {
         duration: 1.5,
         autoAlpha: 0,
-        y: 50,
+        y: 30,
         stagger: 0.3,
         ease: "power2.out",
       });
@@ -46,22 +46,23 @@ const ScrollCard3 = ({ managementTeam }: Props) => {
     cardsRef.current.forEach((card, index) => {
       ScrollTrigger.create({
         trigger: card,
-        start: "top-=50 top",
+        start: "top-=300 top",
         end: "bottom",
         pin: true,
         pinSpacing: false,
         onEnter: () => {
-          gsap.to(card, { autoAlpha: 1 });
+          gsap.to(card, { autoAlpha: 1, duration: 0.3 });
           if (index !== 0) {
             animateElementsIn(card);
           }
         },
         onEnterBack: () => {
-          gsap.to(card, { autoAlpha: 1 });
+          gsap.to(card, { autoAlpha: 1, duration: 0.3 });
           animateElementsIn(card);
         },
-        onLeave: () => gsap.to(card, { autoAlpha: 0 }),
-        onLeaveBack: () => gsap.to(card, { autoAlpha: index === 0 ? 1 : 0 }),
+        onLeave: () => gsap.to(card, { autoAlpha: 0, duration: 0.3 }),
+        onLeaveBack: () =>
+          gsap.to(card, { autoAlpha: index === 0 ? 1 : 0, duration: 0.3 }),
       });
     });
 
@@ -101,10 +102,10 @@ const ScrollCard3 = ({ managementTeam }: Props) => {
           <img
             src={imgDisplay(person.name)}
             alt="management"
-            className="w-full h-96"
+            className="w-full px-10 pb-5 h-96"
           />
           {/* PC画面の場合 */}
-          <div className="absolute text-center bottom-0 right-0 p-7 pb-12 bg-gradient-to-r from-purple-500 to-blue-500 text-white w-4/12 hidden md:block">
+          <div className="absolute text-center bottom-0 right-0 p-7 pb-20 mr-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white w-4/12 hidden md:block">
             <p className="text-sm text-info">{person.position}</p>
             <p className="text-3xl font-bold pt-3 text-info">{person.name}</p>
             <HandwrittenText name={person.name2} />

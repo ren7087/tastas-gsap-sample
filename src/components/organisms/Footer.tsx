@@ -1,22 +1,26 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 const Footer = () => {
   const footerRef = useRef(null);
+  const height = useWindowSize();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    ScrollTrigger.create({
-      trigger: ".service-card3",
-      start: "top-=50 top",
-      end: "bottom",
-      onEnter: () =>
-        gsap.set(footerRef.current, { position: "fixed", bottom: 0 }),
-      onLeaveBack: () => gsap.set(footerRef.current, { position: "static" }),
-    });
-  }, []);
+    if (height > 1100) {
+      ScrollTrigger.create({
+        trigger: ".management-team",
+        start: "top-=50 top",
+        end: "bottom",
+        onEnter: () =>
+          gsap.set(footerRef.current, { position: "fixed", bottom: 0 }),
+        onLeaveBack: () => gsap.set(footerRef.current, { position: "static" }),
+      });
+    }
+  }, [height]);
 
   return (
     <footer

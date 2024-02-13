@@ -5,9 +5,12 @@ import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import Button from "../atoms/button";
 import { ManagementTeamData2 } from "../../constants";
 import ScrollCard3 from "../molecles/ScrollCard3";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 const Management2 = () => {
+  const managementTeamRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLParagraphElement>(null);
+  const height = useWindowSize();
 
   const splitText = (text: string): JSX.Element[] => {
     return text.split("").map((char, index) => (
@@ -38,7 +41,7 @@ const Management2 = () => {
           onEnterBack: () => console.log("Element entered back"),
           onLeaveBack: () => {
             if (isImage) {
-              gsap.to(element, { opacity: 0, duration: 1.5 });
+              gsap.to(element, { opacity: 1, duration: 1.5 });
             }
           },
           toggleActions: "play none none reset",
@@ -61,9 +64,43 @@ const Management2 = () => {
     }
   }, []);
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const managementTeam = managementTeamRef.current;
+    // parentNodeが存在することを確認し、型アサーションを使用してnullでないと宣言
+    const parent = managementTeam?.parentNode as HTMLElement;
+
+    if (managementTeam && parent) {
+      // スペーサー要素を作成
+      const spacer = document.createElement("div");
+      spacer.style.height = `${managementTeam.offsetHeight}px`;
+
+      ScrollTrigger.create({
+        trigger: ".management-team",
+        start: "top top",
+        end: "bottom",
+        onEnter: () => {
+          gsap.set(managementTeam, {
+            position: "fixed",
+            top: 0,
+            width: "100%", // 固定された要素の幅を保持
+          });
+          parent.insertBefore(spacer, managementTeam); // スペーサー要素を挿入
+        },
+        onLeaveBack: () => {
+          gsap.set(managementTeam, { position: "static" });
+          if (spacer.parentNode) {
+            spacer.parentNode.removeChild(spacer); // スペーサー要素を削除
+          }
+        },
+      });
+    }
+  }, []);
+
   return (
-    <div className="bg-primaryBG text-white p-10">
-      <div className="flex flex-col md:flex-row">
+    <div className="bg-primaryBG text-white management-team">
+      <div className="p-10 flex flex-col  md:flex-row" ref={managementTeamRef}>
         <div className="w-full md:w-5/12 flex md:block">
           <p
             className="font-bold text-xl md:text-2xl lg:text-6xl font-serif mr-3 mb-4"
@@ -86,10 +123,7 @@ const Management2 = () => {
           皆様のご支援ご鞭撻を賜りますよう、宜しくお願い申し上げます。
         </div>
       </div>
-      <div
-        className="max-h-auto mt-10 service-card3"
-        style={{ height: "2000px" }}
-      >
+      <div className="max-h-auto pb-10" style={{ height: height && "2000px" }}>
         <ScrollCard3 managementTeam={ManagementTeamData2} />
       </div>
     </div>
