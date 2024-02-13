@@ -93,7 +93,7 @@ const ScrollCard = ({ managementTeam }: Props) => {
           ref={(el: HTMLDivElement) => (cardsRef.current[index] = el)}
           className="card relative md:flex"
           key={index}
-          style={{ opacity: index === 0 ? 1 : 0 }}
+          style={{ opacity: index === 0 ? 1 : 0, overflow: "hidden" }}
         >
           <img
             src={imgDisplay(person.name)}
@@ -102,6 +102,7 @@ const ScrollCard = ({ managementTeam }: Props) => {
             style={{
               height: height > ManagementTeamMaxHeight ? "29rem" : "24rem",
               objectFit: "cover",
+              overflow: "hidden",
             }}
           />
           <div className="absolute text-center bottom-0 right-0 p-7 pb-20 mr-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white w-4/12 hidden md:block">
