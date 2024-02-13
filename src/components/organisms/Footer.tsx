@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useWindowSize } from "../../hooks/useWindowSize";
+import { ManagementTeamMaxHeight } from "../../constants";
 
 const Footer = () => {
   const footerRef = useRef(null);
@@ -10,7 +11,7 @@ const Footer = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    if (height > 1100) {
+    if (height > ManagementTeamMaxHeight) {
       ScrollTrigger.create({
         trigger: ".management-team",
         start: "top-=50 top",

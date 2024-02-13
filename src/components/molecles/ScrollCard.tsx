@@ -7,6 +7,8 @@ import Management2Image from "../../assets/management/02.jpg";
 import Management3Image from "../../assets/management/03.jpg";
 import Management4Image from "../../assets/management/04.jpg";
 import HandwrittenText from "../atoms/HandwrittenText";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import { ManagementTeamMaxHeight } from "../../constants";
 
 type Props = {
   managementTeam: ManagementTeam;
@@ -14,6 +16,7 @@ type Props = {
 
 const ScrollCard = ({ managementTeam }: Props) => {
   const cardsRef = useRef<HTMLDivElement[]>(new Array(managementTeam.length));
+  const height = useWindowSize();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -102,7 +105,10 @@ const ScrollCard = ({ managementTeam }: Props) => {
           <img
             src={imgDisplay(person.name)}
             alt="management"
-            className="w-full px-10 pb-5 h-96"
+            className="w-full px-10 pb-5"
+            style={{
+              height: height > ManagementTeamMaxHeight ? "29rem" : "24rem",
+            }}
           />
           {/* PC画面の場合 */}
           <div className="absolute text-center bottom-0 right-0 p-7 pb-20 mr-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white w-4/12 hidden md:block">

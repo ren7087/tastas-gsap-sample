@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import Button from "../atoms/button";
-import { ManagementTeamData2 } from "../../constants";
+import { ManagementTeamData2, ManagementTeamMaxHeight } from "../../constants";
 import ScrollCard from "../molecles/ScrollCard";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
@@ -123,7 +123,10 @@ const Management = () => {
           皆様のご支援ご鞭撻を賜りますよう、宜しくお願い申し上げます。
         </div>
       </div>
-      <div className="max-h-auto pb-10" style={{ height: height && "2000px" }}>
+      <div
+        className="max-h-auto"
+        style={{ height: height > ManagementTeamMaxHeight ? "2500px" : "auto" }}
+      >
         <ScrollCard managementTeam={ManagementTeamData2} />
       </div>
     </div>

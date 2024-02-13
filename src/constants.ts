@@ -48,3 +48,5 @@ export const ManagementTeamData2: ManagementTeam = [
     position: "執行役員 / 最高品質責任者CQO",
   },
 ];
+
+export const ManagementTeamMaxHeight = 1040;
