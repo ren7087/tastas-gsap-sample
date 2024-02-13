@@ -35,17 +35,19 @@ const Top: React.FC = () => {
 
   return (
     <div className="relative overflow-hidden h-screen">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        controls={false}
-      >
-        <source src={TokyoVideo} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full"
+          style={{ objectFit: "cover", objectPosition: "left center" }}
+        >
+          <source src={TokyoVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 font-bold px-4">
         <p className="text-white text-center text-lg sm:text-xl md:text-2xl">
           ようこそ、デジタル化がもたらすビジネス変革の時代へ
