@@ -108,6 +108,7 @@ const ScrollCard = ({ managementTeam }: Props) => {
             className="w-full px-10 pb-5"
             style={{
               height: height > ManagementTeamMaxHeight ? "29rem" : "24rem",
+              objectFit: "cover",
             }}
           />
           {/* PC画面の場合 */}

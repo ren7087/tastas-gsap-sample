@@ -23,13 +23,15 @@ const Welcome = () => {
       })
       .to(maskRef.current, {
         width: "100%",
-        duration: 0.5,
+        duration: 1,
       })
       .to(maskRef.current, {
         scaleX: 0,
         duration: 0.5,
         transformOrigin: "right",
       });
+
+    return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
 
   return (
